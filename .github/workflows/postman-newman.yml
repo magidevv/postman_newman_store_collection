@@ -28,9 +28,9 @@ jobs:
         run: |
           npx newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme > testResults/runreport1.html
         continue-on-error: true
-        
+
       - name: Output the run Details
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: RunReports
           path: testResults
@@ -40,3 +40,4 @@ jobs:
         with:
           personal_token: ${{ secrets.ACCESS_TOKEN }}
           publish_dir: ./testResults
+          publish_branch: gh-pages
