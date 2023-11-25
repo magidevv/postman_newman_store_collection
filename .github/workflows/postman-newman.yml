@@ -24,14 +24,9 @@ jobs:
       - name: Make directory for results
         run: mkdir -p testResults
 
-      - name: Install PowerShell Core
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y powershell
-
       - name: Run POSTMAN collection
         run: |
-          pwsh -ExecutionPolicy Bypass -Command "newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme > testResults/runreport1.html"
+          npx newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme > testResults/runreport1.html
 
       - name: Output the run Details
         uses: actions/upload-artifact@v3
